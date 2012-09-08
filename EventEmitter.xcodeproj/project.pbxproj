@@ -14,6 +14,9 @@
 		59684AE615F9DF500063CF5E /* EventEmitter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACC15F9DF500063CF5E /* EventEmitter.dylib */; };
 		59684AEC15F9DF500063CF5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59684AEA15F9DF500063CF5E /* InfoPlist.strings */; };
 		59684AEF15F9DF500063CF5E /* EventEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59684AEE15F9DF500063CF5E /* EventEmitterTests.m */; };
+		59A714D415FA26E000D65E26 /* EventEmitterSyntaxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */; };
+		59A714DC15FA520A00D65E26 /* EventEmitterListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A714DA15FA520A00D65E26 /* EventEmitterListener.h */; };
+		59A714DD15FA520A00D65E26 /* EventEmitterListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A714DB15FA520A00D65E26 /* EventEmitterListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +35,6 @@
 		59684AD215F9DF500063CF5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		59684AD315F9DF500063CF5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		59684AD415F9DF500063CF5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		59684AD715F9DF500063CF5E /* EventEmitter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EventEmitter-Prefix.pch"; sourceTree = "<group>"; };
 		59684AD815F9DF500063CF5E /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		59684AD915F9DF500063CF5E /* EventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
 		59684AE015F9DF500063CF5E /* EventEmitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,10 @@
 		59684AEB15F9DF500063CF5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		59684AED15F9DF500063CF5E /* EventEmitterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitterTests.h; sourceTree = "<group>"; };
 		59684AEE15F9DF500063CF5E /* EventEmitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitterTests.m; sourceTree = "<group>"; };
+		59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterSyntaxTests.h; sourceTree = "<group>"; };
+		59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitterSyntaxTests.m; sourceTree = "<group>"; };
+		59A714DA15FA520A00D65E26 /* EventEmitterListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterListener.h; sourceTree = "<group>"; };
+		59A714DB15FA520A00D65E26 /* EventEmitterListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitterListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,17 +115,10 @@
 			children = (
 				59684AD815F9DF500063CF5E /* EventEmitter.h */,
 				59684AD915F9DF500063CF5E /* EventEmitter.m */,
-				59684AD615F9DF500063CF5E /* Supporting Files */,
+				59A714DA15FA520A00D65E26 /* EventEmitterListener.h */,
+				59A714DB15FA520A00D65E26 /* EventEmitterListener.m */,
 			);
 			path = EventEmitter;
-			sourceTree = "<group>";
-		};
-		59684AD615F9DF500063CF5E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				59684AD715F9DF500063CF5E /* EventEmitter-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		59684AE715F9DF500063CF5E /* EventEmitterTests */ = {
@@ -127,6 +126,8 @@
 			children = (
 				59684AED15F9DF500063CF5E /* EventEmitterTests.h */,
 				59684AEE15F9DF500063CF5E /* EventEmitterTests.m */,
+				59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */,
+				59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */,
 				59684AE815F9DF500063CF5E /* Supporting Files */,
 			);
 			path = EventEmitterTests;
@@ -148,6 +149,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A714DC15FA520A00D65E26 /* EventEmitterListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59684ADA15F9DF500063CF5E /* EventEmitter.m in Sources */,
+				59A714DD15FA520A00D65E26 /* EventEmitterListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59684AEF15F9DF500063CF5E /* EventEmitterTests.m in Sources */,
+				59A714D415FA26E000D65E26 /* EventEmitterSyntaxTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,8 +343,6 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventEmitter/EventEmitter-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -350,8 +352,6 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventEmitter/EventEmitter-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -361,8 +361,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventEmitter/EventEmitter-Prefix.pch";
 				INFOPLIST_FILE = "EventEmitterTests/EventEmitterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -374,8 +372,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EventEmitter/EventEmitter-Prefix.pch";
 				INFOPLIST_FILE = "EventEmitterTests/EventEmitterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -401,6 +397,7 @@
 				59684AF415F9DF500063CF5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		59684AF515F9DF500063CF5E /* Build configuration list for PBXNativeTarget "EventEmitterTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +406,7 @@
 				59684AF715F9DF500063CF5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
