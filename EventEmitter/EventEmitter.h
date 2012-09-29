@@ -19,23 +19,23 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EventEmitterListener.h"
+typedef void (^EventEmitterDefaultCallback)(id arg0);
+typedef void (^EventEmitterArrayCallback)(NSArray* data);
 
-/*
-Node.js inspired EventEmitter for objective c.
+#pragma mark - NSObject+EventEmitterListenerHandling
 
-http://nodejs.org/docs/latest/api/events.html
- */
-@interface EventEmitter : NSObject
-@end
-
-@interface EventEmitter(EventEmitterListenerHandling)
+@interface NSObject(EventEmitterListenerHandling)
 
 /*
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
+
+/*
+ Adds a listener to the end of the listeners array for the specified event.
+ */
 - (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback;
+
 // TODO? - (void) on:(NSString*) event callback:(id) callback argumentSize:length;
 // TODO? - (void) onError:(NSError*) error;
 
@@ -44,6 +44,11 @@ http://nodejs.org/docs/latest/api/events.html
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
+
+/*
+ Adds a __one time__ listener for the event. This listener is invoked only
+ the next time the event is fired, after which it is removed.
+ */
 - (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback;
 
 /*
@@ -73,7 +78,9 @@ http://nodejs.org/docs/latest/api/events.html
 
 @end
 
-@interface EventEmitter(EventEmitterDistributionHandling)
+#pragma mark - NSObject+EventEmitterDistributionHandling
+
+@interface NSObject(EventEmitterDistributionHandling)
 
 - (void) emit:(NSString*) event;
 - (void) emit:(NSString*) event data: (id) arg0;

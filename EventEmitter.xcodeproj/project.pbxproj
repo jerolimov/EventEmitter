@@ -15,8 +15,7 @@
 		59684AEC15F9DF500063CF5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59684AEA15F9DF500063CF5E /* InfoPlist.strings */; };
 		59684AEF15F9DF500063CF5E /* EventEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59684AEE15F9DF500063CF5E /* EventEmitterTests.m */; };
 		59A714D415FA26E000D65E26 /* EventEmitterSyntaxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */; };
-		59A714DC15FA520A00D65E26 /* EventEmitterListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A714DA15FA520A00D65E26 /* EventEmitterListener.h */; };
-		59A714DD15FA520A00D65E26 /* EventEmitterListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A714DB15FA520A00D65E26 /* EventEmitterListener.m */; };
+		59ED69701616F891009C400B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 59ED696F1616F891009C400B /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +44,8 @@
 		59684AEE15F9DF500063CF5E /* EventEmitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitterTests.m; sourceTree = "<group>"; };
 		59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterSyntaxTests.h; sourceTree = "<group>"; };
 		59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitterSyntaxTests.m; sourceTree = "<group>"; };
-		59A714DA15FA520A00D65E26 /* EventEmitterListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterListener.h; sourceTree = "<group>"; };
-		59A714DB15FA520A00D65E26 /* EventEmitterListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitterListener.m; sourceTree = "<group>"; };
+		59ED696B1616F6D1009C400B /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		59ED696F1616F891009C400B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +73,8 @@
 		59684AC115F9DF500063CF5E = {
 			isa = PBXGroup;
 			children = (
+				59ED696F1616F891009C400B /* README.md */,
+				59ED696B1616F6D1009C400B /* LICENSE.txt */,
 				59684AD515F9DF500063CF5E /* EventEmitter */,
 				59684AE715F9DF500063CF5E /* EventEmitterTests */,
 				59684ACE15F9DF500063CF5E /* Frameworks */,
@@ -115,8 +116,6 @@
 			children = (
 				59684AD815F9DF500063CF5E /* EventEmitter.h */,
 				59684AD915F9DF500063CF5E /* EventEmitter.m */,
-				59A714DA15FA520A00D65E26 /* EventEmitterListener.h */,
-				59A714DB15FA520A00D65E26 /* EventEmitterListener.m */,
 			);
 			path = EventEmitter;
 			sourceTree = "<group>";
@@ -149,7 +148,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59A714DC15FA520A00D65E26 /* EventEmitterListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59684AEC15F9DF500063CF5E /* InfoPlist.strings in Resources */,
+				59ED69701616F891009C400B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +251,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				59684ADA15F9DF500063CF5E /* EventEmitter.m in Sources */,
-				59A714DD15FA520A00D65E26 /* EventEmitterListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@
 @implementation EventEmitterSyntaxTests
 
 - (void)testOnSyntax {
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	
 	// TODO allow callback function without argument
 //	[emitter on:@"event" callback:^() {
@@ -55,7 +55,7 @@
 }
 
 - (void)testEmitSyntax {
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	
 	[emitter emit:@"ping"];
 	

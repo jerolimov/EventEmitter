@@ -16,23 +16,56 @@
 
 #import "EventEmitter.h"
 
-@interface EventEmitter()
-@property NSMutableDictionary* eventListeners;
+#pragma mark - EventEmitterListener (currently internal API) protocol
+
+@protocol EventEmitterListener <NSObject>
+@property BOOL once;
+@property id callback;
+- (void) notify: (NSArray*) data;
 @end
 
-@implementation EventEmitter
+@interface EventEmitterDefaultCallbackListener : NSObject <EventEmitterListener>
+@end
 
-- (id)init {
-	self = [super init];
-	if (self) {
-		self.eventListeners = [NSMutableDictionary dictionary];
+@interface EventEmitterArrayCallbackListener : NSObject <EventEmitterListener>
+@end
+
+#pragma mark - EventEmitterListener (currently internal API) implementation
+
+@implementation EventEmitterDefaultCallbackListener
+@synthesize once;
+@synthesize callback;
+
+- (void) notify: (NSArray*) data {
+	if (data.count == 0) {
+		((EventEmitterDefaultCallback) callback)(nil);
+	} else if (data.count == 1) {
+		((EventEmitterDefaultCallback) callback)(data[0]);
+	} else {
+		NSLog(@"Could not call block callback with array length > 1");
 	}
-	return self;
+}
+
+- (void) notifyWithDict: (NSDictionary*) dict{
 }
 
 @end
 
-@implementation EventEmitter(EventEmitterListenerHandling)
+@implementation EventEmitterArrayCallbackListener
+@synthesize once;
+@synthesize callback;
+
+- (void) notify: (NSArray*) data {
+	((EventEmitterArrayCallback) callback)(data);
+}
+
+@end
+
+#pragma mark - NSObject+EventEmitterListenerHandling
+
+@implementation NSObject(EventEmitterListenerHandling)
+
+NSMutableDictionary* eventListeners = nil;
 
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
 	[self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback event:event once:NO];
@@ -54,11 +87,17 @@
  Internal helper function.
  */
 - (void) addListener:(NSObject<EventEmitterListener>*) listener callback:(id) callback event:(NSString*) event once:(BOOL) once {
-	NSMutableArray* eventListener = [self.eventListeners objectForKey:event];
-	if (eventListener == nil) {
-		eventListener = [NSMutableArray array];
-		[self.eventListeners setValue:eventListener forKey:event];
+	
+	if (!eventListeners) {
+		eventListeners = [NSMutableDictionary dictionary];
 	}
+	
+	NSMutableArray* eventListener = [eventListeners objectForKey:event];
+	if (!eventListener) {
+		eventListener = [NSMutableArray array];
+		[eventListeners setValue:eventListener forKey:event];
+	}
+	
 	listener.once = once;
 	listener.callback = callback;
 	[eventListener addObject:listener];
@@ -66,7 +105,9 @@
 
 @end
 
-@implementation EventEmitter(EventEmitterDistributionHandling)
+#pragma mark - NSObject+EventEmitterDistributionHandling
+
+@implementation NSObject(EventEmitterDistributionHandling)
 
 - (void) emit:(NSString*) event {
 	[self emit:event array:[NSArray array]];
@@ -100,10 +141,10 @@
 }
 
 - (NSMutableArray*) eventListeners:(NSString*) event {
-	if (self.eventListeners == nil) {
+	if (!eventListeners) {
 		return nil;
 	}
-	return [self.eventListeners valueForKey:event];
+	return [eventListeners valueForKey:event];
 }
 
 @end

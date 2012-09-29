@@ -21,7 +21,7 @@
 
 - (void)testSimplestOnCallback {
 	__block int i = 0;
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	[emitter on:@"key" callback:^(id value) {
 		i++;
 	}];
@@ -32,7 +32,7 @@
 
 - (void)testSimplestOnceCallback {
 	__block int i = 0;
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	[emitter once:@"key" callback:^(id value) {
 		i++;
 	}];
@@ -43,7 +43,7 @@
 
 - (void)testSimplestOnArray {
 	__block int i = 0;
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	[emitter on:@"key" array:^(NSArray* data) {
 		i++;
 	}];
@@ -54,7 +54,7 @@
 
 - (void)testSimplestOnceArray {
 	__block int i = 0;
-	EventEmitter* emitter = [[EventEmitter alloc] init];
+	NSObject* emitter = [[NSObject alloc] init];
 	[emitter once:@"key" array:^(NSArray* data) {
 		i++;
 	}];
