@@ -63,4 +63,36 @@
 	STAssertEquals(i, 1, @"");
 }
 
+- (void)testMemoryWithOnMethod {
+	int loops = 1000000;
+	
+	__block int i = 0;
+	NSObject* emitter;
+	for (int j = 0; j < loops; j++) {
+		emitter = [[NSObject alloc] init];
+		[emitter on:@"key" callback:^(id value) {
+			i++;
+		}];
+		[emitter emit:@"key"];
+		[emitter emit:@"key"];
+	}
+	STAssertEquals(i, loops * 2, @"");
+}
+
+- (void)testMemoryWithOnceMethod {
+	int loops = 1000000;
+	
+	__block int i = 0;
+	NSObject* emitter;
+	for (int j = 0; j < loops; j++) {
+		emitter = [[NSObject alloc] init];
+		[emitter once:@"key" callback:^(id value) {
+			i++;
+		}];
+		[emitter emit:@"key"];
+		[emitter emit:@"key"];
+	}
+	STAssertEquals(i, loops, @"");
+}
+
 @end

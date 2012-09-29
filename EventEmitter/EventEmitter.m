@@ -16,6 +16,8 @@
 
 #import "EventEmitter.h"
 
+#import <objc/runtime.h>
+
 #pragma mark - EventEmitterListener (currently internal API) protocol
 
 @protocol EventEmitterListener <NSObject>
@@ -31,6 +33,8 @@
 @end
 
 #pragma mark - EventEmitterListener (currently internal API) implementation
+
+static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 
 @implementation EventEmitterDefaultCallbackListener
 @synthesize once;
@@ -65,8 +69,6 @@
 
 @implementation NSObject(EventEmitterListenerHandling)
 
-NSMutableDictionary* eventListeners = nil;
-
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
 	[self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback event:event once:NO];
 }
@@ -88,8 +90,11 @@ NSMutableDictionary* eventListeners = nil;
  */
 - (void) addListener:(NSObject<EventEmitterListener>*) listener callback:(id) callback event:(NSString*) event once:(BOOL) once {
 	
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	
 	if (!eventListeners) {
 		eventListeners = [NSMutableDictionary dictionary];
+		objc_setAssociatedObject(self, _EventEmitter_ListenerArray, eventListeners, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
 	
 	NSMutableArray* eventListener = [eventListeners objectForKey:event];
@@ -132,19 +137,27 @@ NSMutableDictionary* eventListeners = nil;
 }
 
 - (void) emit:(NSString*) event array: (NSArray*) array {
-	for (NSObject<EventEmitterListener>* listener in [self eventListeners:event]) {
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	NSMutableArray* eventListener = [eventListeners valueForKey:event];
+	NSMutableIndexSet* discardedItems = [NSMutableIndexSet indexSet];
+	NSUInteger index = 0;
+
+	for (NSObject<EventEmitterListener>* listener in eventListener) {
 		[listener notify:array];
 		if (listener.once) {
-			[[self eventListeners:event] removeObject:listener];
+			[discardedItems addIndex:index];
 		}
+		index++;
 	}
-}
-
-- (NSMutableArray*) eventListeners:(NSString*) event {
-	if (!eventListeners) {
-		return nil;
+	
+	if (eventListener.count == discardedItems.count) {
+		[eventListeners removeObjectForKey:event];
+		if (eventListener.count == 0) {
+			objc_setAssociatedObject(self, _EventEmitter_ListenerArray, nil, OBJC_ASSOCIATION_ASSIGN);
+		}
+	} else if (discardedItems.count > 0) {
+		[eventListener removeObjectsAtIndexes:discardedItems];
 	}
-	return [eventListeners valueForKey:event];
 }
 
 @end
