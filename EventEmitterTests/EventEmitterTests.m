@@ -19,6 +19,28 @@
 
 @implementation EventEmitterTests
 
+- (void)testSimplestOnNotify {
+	__block int i = 0;
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter on:@"key" notify:^() {
+		i++;
+	}];
+	[emitter emit:@"key"];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 2, @"");
+}
+
+- (void)testSimplestOnceNotify {
+	__block int i = 0;
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter once:@"key" notify:^() {
+		i++;
+	}];
+	[emitter emit:@"key"];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 1, @"");
+}
+
 - (void)testSimplestOnCallback {
 	__block int i = 0;
 	NSObject* emitter = [[NSObject alloc] init];

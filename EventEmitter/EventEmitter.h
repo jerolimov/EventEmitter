@@ -19,12 +19,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^EventEmitterNotifyCallback)();
 typedef void (^EventEmitterDefaultCallback)(id arg0);
 typedef void (^EventEmitterArrayCallback)(NSArray* data);
 
 #pragma mark - NSObject+EventEmitterListenerHandling
 
 @interface NSObject(EventEmitterListenerHandling)
+
+/*
+ Adds a listener to the end of the listeners array for the specified event.
+ */
+- (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
 
 /*
  Adds a listener to the end of the listeners array for the specified event.
@@ -38,6 +44,12 @@ typedef void (^EventEmitterArrayCallback)(NSArray* data);
 
 // TODO? - (void) on:(NSString*) event callback:(id) callback argumentSize:length;
 // TODO? - (void) onError:(NSError*) error;
+
+/*
+ Adds a __one time__ listener for the event. This listener is invoked only
+ the next time the event is fired, after which it is removed.
+ */
+- (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
 
 /*
  Adds a __one time__ listener for the event. This listener is invoked only

@@ -22,10 +22,9 @@
 - (void)testOnSyntax {
 	NSObject* emitter = [[NSObject alloc] init];
 	
-	// TODO allow callback function without argument
-//	[emitter on:@"event" callback:^() {
-//		NSLog(@"callback function without argument");
-//	}];
+	[emitter on:@"event" notify:^() {
+		NSLog(@"callback function without argument");
+	}];
 	
 	[emitter on:@"event" callback:^(NSString* value) {
 		NSLog(@"callback function with one argument: %@", value);
@@ -57,7 +56,7 @@
 - (void)testEmitSyntax {
 	NSObject* emitter = [[NSObject alloc] init];
 	
-	[emitter emit:@"ping"];
+	[emitter emit:@"event"];
 	
 	[emitter emit:@"event" data:@"value"];
 	

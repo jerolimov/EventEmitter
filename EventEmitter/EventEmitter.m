@@ -26,6 +26,9 @@
 - (void) notify: (NSArray*) data;
 @end
 
+@interface EventEmitterNotifyCallbackListener : NSObject <EventEmitterListener>
+@end
+
 @interface EventEmitterDefaultCallbackListener : NSObject <EventEmitterListener>
 @end
 
@@ -34,7 +37,15 @@
 
 #pragma mark - EventEmitterListener (currently internal API) implementation
 
-static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
+@implementation EventEmitterNotifyCallbackListener
+@synthesize once;
+@synthesize callback;
+
+- (void) notify: (NSArray*) data {
+	((EventEmitterNotifyCallback) callback)();
+}
+
+@end
 
 @implementation EventEmitterDefaultCallbackListener
 @synthesize once;
@@ -48,9 +59,6 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 	} else {
 		NSLog(@"Could not call block callback with array length > 1");
 	}
-}
-
-- (void) notifyWithDict: (NSDictionary*) dict{
 }
 
 @end
@@ -67,7 +75,13 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 
 #pragma mark - NSObject+EventEmitterListenerHandling
 
+static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
+
 @implementation NSObject(EventEmitterListenerHandling)
+
+- (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback {
+	[self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback event:event once:NO];
+}
 
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
 	[self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback event:event once:NO];
@@ -75,6 +89,10 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 
 - (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback {
 	[self addListener:[[EventEmitterArrayCallbackListener alloc] init] callback:callback event:event once:NO];
+}
+
+- (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback {
+	[self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback event:event once:YES];
 }
 
 - (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
