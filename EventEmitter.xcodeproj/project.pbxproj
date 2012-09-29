@@ -12,7 +12,6 @@
 		59684AE215F9DF500063CF5E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684AE115F9DF500063CF5E /* SenTestingKit.framework */; };
 		59684AE315F9DF500063CF5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACF15F9DF500063CF5E /* Cocoa.framework */; };
 		59684AE615F9DF500063CF5E /* EventEmitter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACC15F9DF500063CF5E /* EventEmitter.dylib */; };
-		59684AEC15F9DF500063CF5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59684AEA15F9DF500063CF5E /* InfoPlist.strings */; };
 		59684AEF15F9DF500063CF5E /* EventEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59684AEE15F9DF500063CF5E /* EventEmitterTests.m */; };
 		59A714D415FA26E000D65E26 /* EventEmitterSyntaxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */; };
 		59ED69701616F891009C400B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 59ED696F1616F891009C400B /* README.md */; };
@@ -38,8 +37,6 @@
 		59684AD915F9DF500063CF5E /* EventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
 		59684AE015F9DF500063CF5E /* EventEmitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59684AE115F9DF500063CF5E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		59684AE915F9DF500063CF5E /* EventEmitterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventEmitterTests-Info.plist"; sourceTree = "<group>"; };
-		59684AEB15F9DF500063CF5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		59684AED15F9DF500063CF5E /* EventEmitterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitterTests.h; sourceTree = "<group>"; };
 		59684AEE15F9DF500063CF5E /* EventEmitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitterTests.m; sourceTree = "<group>"; };
 		59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterSyntaxTests.h; sourceTree = "<group>"; };
@@ -127,18 +124,8 @@
 				59684AEE15F9DF500063CF5E /* EventEmitterTests.m */,
 				59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */,
 				59A714D315FA26E000D65E26 /* EventEmitterSyntaxTests.m */,
-				59684AE815F9DF500063CF5E /* Supporting Files */,
 			);
 			path = EventEmitterTests;
-			sourceTree = "<group>";
-		};
-		59684AE815F9DF500063CF5E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				59684AE915F9DF500063CF5E /* EventEmitterTests-Info.plist */,
-				59684AEA15F9DF500063CF5E /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +209,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59684AEC15F9DF500063CF5E /* InfoPlist.strings in Resources */,
 				59ED69701616F891009C400B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,17 +258,6 @@
 			targetProxy = 59684AE415F9DF500063CF5E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		59684AEA15F9DF500063CF5E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				59684AEB15F9DF500063CF5E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		59684AF015F9DF500063CF5E /* Debug */ = {
@@ -359,7 +334,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				INFOPLIST_FILE = "EventEmitterTests/EventEmitterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -370,7 +344,6 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				INFOPLIST_FILE = "EventEmitterTests/EventEmitterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
