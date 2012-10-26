@@ -1,5 +1,11 @@
 Node.js inspired EventEmitter for objective c.
 
+## Use it
+
+Copy the EventEmitter class into your project or add this line to your Podfile
+
+	pod 'EventEmitter', '~> 0.1.1'
+
 ## Quick API overview
 
 Register event listener on any object:
