@@ -126,6 +126,56 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 	[eventListener addObject:listener];
 }
 
+- (void) removeCallback:(id) callback {
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	for (NSString* event in [eventListeners keyEnumerator]) {
+		[self removeListener:event callback:callback];
+	}
+}
+
+- (void) removeListener:(NSString*) event callback:(id) callback {
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	NSMutableArray* eventListener = [eventListeners valueForKey:event];
+	if (!eventListener) {
+		return;
+	}
+	
+	NSMutableIndexSet* discardedItems = [NSMutableIndexSet indexSet];
+	NSUInteger index = 0;
+	for (NSObject<EventEmitterListener>* listener in eventListener) {
+		if (listener.callback == callback) {
+			[discardedItems addIndex:index];
+		}
+		index++;
+	}
+	[eventListener removeObjectsAtIndexes:discardedItems];
+	
+	if (eventListeners.count == 0) {
+		objc_setAssociatedObject(self, _EventEmitter_ListenerArray, nil, OBJC_ASSOCIATION_ASSIGN);
+	}
+}
+
+- (void) removeAllListener:(NSString*) event {
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	NSMutableArray* eventListener = [eventListeners valueForKey:event];
+	[eventListener removeAllObjects];
+	[eventListeners removeObjectForKey:event];
+	
+	if (eventListeners.count == 0) {
+		objc_setAssociatedObject(self, _EventEmitter_ListenerArray, nil, OBJC_ASSOCIATION_ASSIGN);
+	}
+}
+
+- (void) removeAllListener {
+	NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
+	for (NSMutableArray* eventListener in [eventListeners objectEnumerator]) {
+		[eventListener removeAllObjects];
+	}
+	[eventListeners removeAllObjects];
+	
+	objc_setAssociatedObject(self, _EventEmitter_ListenerArray, nil, OBJC_ASSOCIATION_ASSIGN);
+}
+
 @end
 
 #pragma mark - NSObject+EventEmitterDistributionHandling

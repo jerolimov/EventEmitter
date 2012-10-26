@@ -64,19 +64,24 @@ typedef void (^EventEmitterArrayCallback)(NSArray* data);
 - (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback;
 
 /*
+ Remove a callback from the listener array.
+ */
+- (void) removeCallback:(id) callback;
+
+/*
  Remove a listener from the listener array for the specified event.
  */
-//- (void) removeListener:(NSString*) event callback:(id) callback;
+- (void) removeListener:(NSString*) event callback:(id) callback;
 
 /*
  Removes all listeners for the specified event.
  */
-//- (void) removeAllListener:(NSString*) event;
+- (void) removeAllListener:(NSString*) event;
 
 /*
  Removes all listeners.
  */
-//- (void) removeAllListener;
+- (void) removeAllListener;
 
 /*
  Returns an array of listeners.

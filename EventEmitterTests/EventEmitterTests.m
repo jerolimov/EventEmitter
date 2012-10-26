@@ -85,6 +85,58 @@
 	STAssertEquals(i, 1, @"");
 }
 
+- (void)testSimplestOnNotifyWithRemoveBlock {
+	__block int i = 0;
+	id block = ^() {
+		i++;
+	};
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter on:@"key" notify:block];
+	[emitter emit:@"key"];
+	[emitter removeCallback:block];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 1, @"");
+}
+
+- (void)testSimplestOnNotifyWithRemoveListener {
+	__block int i = 0;
+	id block = ^() {
+		i++;
+	};
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter on:@"key" notify:block];
+	[emitter emit:@"key"];
+	[emitter removeListener:@"key" callback:block];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 1, @"");
+}
+
+- (void)testSimplestOnNotifyWithRemoveAllListenerForOneEvent {
+	__block int i = 0;
+	id block = ^() {
+		i++;
+	};
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter on:@"key" notify:block];
+	[emitter emit:@"key"];
+	[emitter removeAllListener:@"key"];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 1, @"");
+}
+
+- (void)testSimplestOnNotifyWithRemoveAllListener {
+	__block int i = 0;
+	id block = ^() {
+		i++;
+	};
+	NSObject* emitter = [[NSObject alloc] init];
+	[emitter on:@"key" notify:block];
+	[emitter emit:@"key"];
+	[emitter removeAllListener];
+	[emitter emit:@"key"];
+	STAssertEquals(i, 1, @"");
+}
+
 - (void)testMemoryWithOnMethod {
 	int loops = 1000000;
 	
