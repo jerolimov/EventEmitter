@@ -314,6 +314,7 @@
 		59684AF315F9DF500063CF5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,6 +324,7 @@
 		59684AF415F9DF500063CF5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
