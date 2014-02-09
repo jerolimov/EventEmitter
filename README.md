@@ -4,42 +4,47 @@ Node.js inspired EventEmitter for objective c.
 
 Copy the EventEmitter class into your project or add this line to your Podfile
 
-	pod 'EventEmitter', '~> 0.1.1'
+```ruby
+pod 'EventEmitter', '~> 0.1.1'
+```
 
 ## Quick API overview
 
 Register event listener on any object:
 
-	#import "EventEmitter.h"
+```objectivec
+#import "EventEmitter.h"
 
-	NSObject* emitter = [[NSObject alloc] init];
+NSObject* emitter = [[NSObject alloc] init];
 
-	__block BOOL ready = NO;
+__block BOOL ready = NO;
 
-	[emitter on:@"ready" notify:^() {
-		NSLog(@"Yepp! The object is ready now!");
-		ready = YES;
-	}];
+[emitter on:@"ready" notify:^() {
+	NSLog(@"Yepp! The object is ready now!");
+	ready = YES;
+}];
 
-	[emitter on:@"event" callback:^(NSDictionary* data) {
-		if (ready) {
-			NSLog(@"Receive event with data: %@", data);
-		}
-	}];
+[emitter on:@"event" callback:^(NSDictionary* data) {
+	if (ready) {
+		NSLog(@"Receive event with data: %@", data);
+	}
+}];
+```
 
 And later fire an event to the same object:
 
-	#import "EventEmitter.h"
-	
-	NSObject* emitter = ...;
-	
-	[emitter emit:@"ready"];
-	
-	[emitter emit:@"event" data:@{
-		@"type": @"somethinghappend",
-		@"another key": @"another value",
-	}];
+```objectivec
+#import "EventEmitter.h"
 
+NSObject* emitter = ...;
+
+[emitter emit:@"ready"];
+
+[emitter emit:@"event" data:@{
+	@"type": @"somethinghappend",
+	@"another key": @"another value",
+}];
+```
 
 ## Implementation details
 
