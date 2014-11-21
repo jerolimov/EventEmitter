@@ -220,7 +220,7 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 	
 	if (eventListener.count == discardedItems.count) {
 		[eventListeners removeObjectForKey:event];
-		if (eventListener.count == 0) {
+		if (eventListeners.count == 0) {
 			objc_setAssociatedObject(self, _EventEmitter_ListenerArray, nil, OBJC_ASSOCIATION_ASSIGN);
 		}
 	} else if (discardedItems.count > 0) {
