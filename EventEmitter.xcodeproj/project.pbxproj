@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		59684AD015F9DF500063CF5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACF15F9DF500063CF5E /* Cocoa.framework */; };
 		59684ADA15F9DF500063CF5E /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59684AD915F9DF500063CF5E /* EventEmitter.m */; };
-		59684AE215F9DF500063CF5E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684AE115F9DF500063CF5E /* SenTestingKit.framework */; };
 		59684AE315F9DF500063CF5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACF15F9DF500063CF5E /* Cocoa.framework */; };
 		59684AE615F9DF500063CF5E /* EventEmitter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59684ACC15F9DF500063CF5E /* EventEmitter.dylib */; };
 		59684AEF15F9DF500063CF5E /* EventEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59684AEE15F9DF500063CF5E /* EventEmitterTests.m */; };
@@ -36,7 +35,6 @@
 		59684AD815F9DF500063CF5E /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		59684AD915F9DF500063CF5E /* EventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
 		59684AE015F9DF500063CF5E /* EventEmitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		59684AE115F9DF500063CF5E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		59684AED15F9DF500063CF5E /* EventEmitterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitterTests.h; sourceTree = "<group>"; };
 		59684AEE15F9DF500063CF5E /* EventEmitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitterTests.m; sourceTree = "<group>"; };
 		59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterSyntaxTests.h; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59684AE215F9DF500063CF5E /* SenTestingKit.framework in Frameworks */,
 				59684AE315F9DF500063CF5E /* Cocoa.framework in Frameworks */,
 				59684AE615F9DF500063CF5E /* EventEmitter.dylib in Frameworks */,
 			);
@@ -92,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				59684ACF15F9DF500063CF5E /* Cocoa.framework */,
-				59684AE115F9DF500063CF5E /* SenTestingKit.framework */,
 				59684AD115F9DF500063CF5E /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -175,7 +171,7 @@
 			name = EventEmitterTests;
 			productName = EventEmitterTests;
 			productReference = 59684AE015F9DF500063CF5E /* EventEmitterTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -183,7 +179,8 @@
 		59684AC315F9DF500063CF5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = buenocode;
 			};
 			buildConfigurationList = 59684AC615F9DF500063CF5E /* Build configuration list for PBXProject "EventEmitter" */;
@@ -264,7 +261,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -293,7 +289,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -335,9 +330,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -345,9 +342,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

@@ -1,5 +1,5 @@
 //
-//  Copyright 2012 Christoph Jerolimov
+//  Copyright 2012-2014 Christoph Jerolimov
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 2, @"");
+	XCTAssertEqual(i, 2, @"");
 }
 
 - (void)testSimplestOnceNotify {
@@ -38,7 +38,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnCallback {
@@ -49,7 +49,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 2, @"");
+	XCTAssertEqual(i, 2, @"");
 }
 
 - (void)testSimplestOnceCallback {
@@ -60,7 +60,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnArray {
@@ -71,7 +71,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 2, @"");
+	XCTAssertEqual(i, 2, @"");
 }
 
 - (void)testSimplestOnceArray {
@@ -82,7 +82,7 @@
 	}];
 	[emitter emit:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnNotifyWithRemoveBlock {
@@ -95,7 +95,7 @@
 	[emitter emit:@"key"];
 	[emitter removeCallback:block];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnNotifyWithRemoveListener {
@@ -108,7 +108,7 @@
 	[emitter emit:@"key"];
 	[emitter removeListener:@"key" callback:block];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnNotifyWithRemoveAllListenerForOneEvent {
@@ -121,7 +121,7 @@
 	[emitter emit:@"key"];
 	[emitter removeAllListener:@"key"];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testSimplestOnNotifyWithRemoveAllListener {
@@ -134,7 +134,7 @@
 	[emitter emit:@"key"];
 	[emitter removeAllListener];
 	[emitter emit:@"key"];
-	STAssertEquals(i, 1, @"");
+	XCTAssertEqual(i, 1, @"");
 }
 
 - (void)testMemoryWithOnMethod {
@@ -150,7 +150,7 @@
 		[emitter emit:@"key"];
 		[emitter emit:@"key"];
 	}
-	STAssertEquals(i, loops * 2, @"");
+	XCTAssertEqual(i, loops * 2, @"");
 }
 
 - (void)testMemoryWithOnceMethod {
@@ -166,7 +166,23 @@
 		[emitter emit:@"key"];
 		[emitter emit:@"key"];
 	}
-	STAssertEquals(i, loops, @"");
+	XCTAssertEqual(i, loops, @"");
+}
+
+- (void)testMemoryWithAnotherOnceMethod {
+    int loops = 1000000;
+    
+    __block int i = 0;
+    NSObject* emitter;
+    for (int j = 0; j < loops; j++) {
+        emitter = [[NSObject alloc] init];
+        [emitter on:@"key" callback:^(id value) {
+            i++;
+        }];
+        [emitter emit:@"anotherkey"];
+        [emitter emit:@"key"];
+    }
+    XCTAssertEqual(i, loops, @"");
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  Copyright 2012 Christoph Jerolimov
+//  Copyright 2012-2014 Christoph Jerolimov
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 //  limitations under the License
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface EventEmitterSyntaxTests : SenTestCase
+@interface EventEmitterSyntaxTests : XCTestCase
 
 @end
