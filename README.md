@@ -3,7 +3,7 @@
 > Node.js inspired EventEmitter for Objective C.
 
 [![Build Status](https://travis-ci.org/jerolimov/EventEmitter.svg)](https://travis-ci.org/jerolimov/EventEmitter)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/EventEmitter.svg)](https://img.shields.io/cocoapods/v/EventEmitter.svg)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/EventEmitter.svg)](https://cocoapods.org/pods/EventEmitter)
 [![Supported Platforms](https://img.shields.io/cocoapods/p/EventEmitter.svg?style=flat)](http://cocoadocs.org/docsets/EventEmitter)
 
 ## How to use it
