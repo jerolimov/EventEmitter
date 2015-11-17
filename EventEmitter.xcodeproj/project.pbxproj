@@ -34,7 +34,7 @@
 		59684AD415F9DF500063CF5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		59684AD815F9DF500063CF5E /* EventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		59684AD915F9DF500063CF5E /* EventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
-		59684AE015F9DF500063CF5E /* EventEmitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventEmitterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59684AE015F9DF500063CF5E /* EventEmitterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = EventEmitterTests.octest; path = EventEmitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59684AED15F9DF500063CF5E /* EventEmitterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventEmitterTests.h; sourceTree = "<group>"; };
 		59684AEE15F9DF500063CF5E /* EventEmitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventEmitterTests.m; sourceTree = "<group>"; };
 		59A714D215FA26E000D65E26 /* EventEmitterSyntaxTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitterSyntaxTests.h; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0610;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = buenocode;
 			};
 			buildConfigurationList = 59684AC615F9DF500063CF5E /* Build configuration list for PBXProject "EventEmitter" */;
@@ -266,6 +266,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
