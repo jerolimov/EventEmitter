@@ -11,7 +11,7 @@
 Copy the EventEmitter class into your project or add this line to your [Podfile](http://cocoapods.org/):
 
 ```ruby
-pod 'EventEmitter', '~> 0.1.1'
+pod 'EventEmitter', '~> 0.1.3'
 ```
 
 ## Quick API overview

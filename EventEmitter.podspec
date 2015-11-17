@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name             = 'EventEmitter'
   spec.summary          = 'Node.js inspired EventEmitter for Objective C.'
-  spec.version          = '0.1.2'
+  spec.version          = '0.1.3'
   spec.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
   spec.homepage         = 'https://github.com/jerolimov/EventEmitter'
   spec.author           = "Christoph Jerolimov"
