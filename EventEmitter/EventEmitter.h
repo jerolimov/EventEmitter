@@ -1,5 +1,5 @@
 //
-//  Copyright 2012-2014 Christoph Jerolimov
+//  Copyright 2012-2015 Christoph Jerolimov
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -24,58 +24,55 @@ typedef void (^EventEmitterArrayCallback)(NSArray* data);
 
 @interface NSObject(EventEmitterListenerHandling)
 
-/*
+/**
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
 
-/*
+/**
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
 
-/*
+/**
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback;
 
-// TODO? - (void) on:(NSString*) event callback:(id) callback argumentSize:length;
-// TODO? - (void) onError:(NSError*) error;
-
-/*
+/**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
 
-/*
+/**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
 
-/*
+/**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback;
 
-/*
+/**
  Remove a callback from the listener array.
  */
 - (void) removeCallback:(id) callback;
 
-/*
+/**
  Remove a listener from the listener array for the specified event.
  */
 - (void) removeListener:(NSString*) event callback:(id) callback;
 
-/*
+/**
  Removes all listeners for the specified event.
  */
 - (void) removeAllListener:(NSString*) event;
 
-/*
+/**
  Removes all listeners.
  */
 - (void) removeAllListener;
@@ -96,9 +93,24 @@ typedef void (^EventEmitterArrayCallback)(NSArray* data);
 
 @interface NSObject(EventEmitterDistributionHandling)
 
+/**
+ Emit an event without data.
+ */
 - (void) emit:(NSString*) event;
+
+/**
+ Emit an event with a data object.
+ */
 - (void) emit:(NSString*) event data: (id) arg0;
+
+/**
+ Emit an event with one or more arguments.
+ */
 - (void) emit:(NSString*) event arguments: (id) arg0, ...;
+
+/**
+ Emit an event with an array as argument.
+ */
 - (void) emit:(NSString*) event array: (NSArray*) array;
 
 @end

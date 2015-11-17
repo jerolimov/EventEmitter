@@ -2,9 +2,13 @@
 
 > Node.js inspired EventEmitter for Objective C.
 
-## Use it
+[![Build Status](https://travis-ci.org/jerolimov/EventEmitter.svg)](https://travis-ci.org/jerolimov/EventEmitter)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/EventEmitter.svg)](https://img.shields.io/cocoapods/v/EventEmitter.svg)
+[![Supported Platforms](https://img.shields.io/cocoapods/p/EventEmitter.svg?style=flat)](http://cocoadocs.org/docsets/EventEmitter)
 
-Copy the EventEmitter class into your project or add this line to your Podfile
+## How to use it
+
+Copy the EventEmitter class into your project or add this line to your [Podfile](http://cocoapods.org/):
 
 ```ruby
 pod 'EventEmitter', '~> 0.1.1'
