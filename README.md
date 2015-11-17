@@ -1,4 +1,6 @@
-Node.js inspired EventEmitter for objective c.
+# Objective C EventEmitter
+
+> Node.js inspired EventEmitter for Objective C.
 
 ## Use it
 
